@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Minimalist Envelope Frame -->
+  <rect x="15" y="24" width="70" height="52" rx="8" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <!-- Envelope Flap Lines -->
+  <path d="M18 28 L50 52 L82 28" fill="none" stroke="#FF4D6D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom Corner Accents -->
+  <line x1="18" y1="72" x2="38" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="82" y1="72" x2="62" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Status dot -->
+  <circle cx="78" cy="28" r="5" fill="#FF758F"/>
+</svg>
+
