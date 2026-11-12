@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Niveles de Especificidad CSS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #2b060b;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .caja-nav {
+            background-color: #4A0E17;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .caja-hero {
+            background-color: #7B111F;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-card {
+            background-color: #4A0E17;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            height: 100%;
+        }
+
+        .panel-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 16px 20px;
+        }
+
+        .panel-body {
+            padding: 20px;
+        }
+
+        /* Tabla de Pesos */
+        .fila-peso {
+            background-color: #6D0F1B;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .fila-peso:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        .fila-peso.destacada {
+            background-color: #BA2436;
+        }
+
+        .col-nombre {
+            flex: 1;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .col-valores {
+            background-color: #8C1424;
+            padding: 14px 22px;
+            min-width: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            border-left: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .fila-peso.destacada .col-valores {
+            background-color: #D62839;
+        }
+
+        /* ¿Cómo funciona? */
+        .item-regla {
+            background-color: #5d0f1a;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .item-regla:hover {
+            transform: translateX(4px);
+        }
+
+        .badge-numero {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .badge-num-orange {
+            background-color: #fd7e14;
+            color: #ffffff;
+        }
+
+        .badge-num-red {
+            background-color: #BA2436;
+            color: #ffffff;
+        }
+
+        .badge-num-muted {
+            background-color: #6c757d;
+            color: #ffffff;
+        }
+
+        .codigo-tag {
+            background-color: rgba(0, 0, 0, 0.35);
+            color: #ffc9c9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        .box-desempate {
+            background-color: rgba(0, 0, 0, 0.25);
+            border: 1px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid px-3 px-md-4 py-3">
+
+        <!-- Barra de Navegación -->
+        <header class="row mb-4">
+            <div class="col-12">
+                <nav class="caja-nav d-flex p-3 justify-content-center align-items-center flex-wrap gap-2 gap-md-3">
+                    <a class="btn btn-outline-light" href="index.html" role="button">Estructura y sintaxis</a>
+                    <a class="btn btn-light fw-bold text-dark shadow" href="espec.html" role="button">Niveles de especificidad</a>
+                    <a class="btn btn-outline-light" href="pseudo.html" role="button">Pseudo Clases y Pseudo Elementos</a>
+                    <a class="btn btn-outline-light" href="#" role="button">Modelo de caja</a>
+                    <a class="btn btn-outline-light" href="index.html" role="button">Volver al Index</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Título Principal -->
+        <section class="row mb-4">
+            <div class="col-12">
+                <div class="caja-hero p-4 text-center">
+                    <h1 class="fw-bold mb-2">Niveles de Especificidad CSS</h1>
+                    <p class="lead mb-0 text-white-50">
+                        ¿Qué regla gana en CSS? El navegador compara los pesos de cada selector de izquierda a derecha.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido en disposición vertical: 1° ¿Cómo funciona? y 2° Tabla de Pesos -->
+        <div class="row g-4">
+
+            <!-- 1° Sección: ¿Cómo funciona? -->
+            <div class="col-12">
+                <div class="panel-card d-flex flex-column">
+                    <div class="panel-header">
+                        <h4 class="fw-bold mb-0">¿Cómo funciona?</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p class="mb-3 text-white-50">
+                            La <strong class="text-white">especificidad</strong> es el peso que tiene cada regla en CSS. Si dos reglas apuntan al mismo elemento, se aplica la que tenga mayor puntuación según esta jerarquía:
+                        </p>
+
+                        <!-- Regla 1 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-orange">1</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">!important</span>
+                                <span class="small text-white-50">Máxima prioridad. Sobrescribe cualquier estilo.</span>
+                            </div>
+                        </div>
+
+                        <!-- Regla 2 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-red">2</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">#ID</span>
+                                <span class="small text-white-50">Identificador único (<code class="codigo-tag">#header</code>). Gran peso.</span>
+                            </div>
+                        </div>
+
+                        <!-- Regla 3 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-red">3</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">Estilos en línea</span>
+                                <span class="small text-white-50">Declarados en el HTML con <code class="codigo-tag">style=""</code>.</span>
+                            </div>
+                        </div>
+
+                        <!-- Regla 4 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-red">4</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">.Clases / Pseudo</span>
+                                <span class="small text-white-50">Clases (<code class="codigo-tag">.btn</code>), pseudoclases y atributos.</span>
+                            </div>
+                        </div>
+
+                        <!-- Regla 5 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-red">5</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">&lt;Elementos/&gt;</span>
+                                <span class="small text-white-50">Etiquetas (<code class="codigo-tag">p</code>, <code class="codigo-tag">div</code>) y pseudoelementos.</span>
+                            </div>
+                        </div>
+
+                        <!-- Regla 6 -->
+                        <div class="item-regla">
+                            <span class="badge-numero badge-num-muted">6</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2">*Universal</span>
+                                <span class="small text-white-50">Comodín <code class="codigo-tag">*</code>. No aporta puntos (0).</span>
+                            </div>
+                        </div>
+
+                        <!-- Caja de Desempate -->
+                        <div class="box-desempate">
+                            <p class="small mb-0 text-white-50">
+                                <strong class="text-white">Desempate:</strong> Si dos selectores tienen el mismo puntaje, gana la regla que esté <strong>más abajo</strong> en el código CSS (regla de la cascada).
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2° Sección: Tabla de Pesos -->
+            <div class="col-12">
+                <div class="panel-card d-flex flex-column">
+                    <div class="panel-header d-flex justify-content-between align-items-center">
+                        <h4 class="fw-bold mb-0">Tabla de Pesos</h4>
+                        <span class="badge bg-danger px-3 py-2 text-uppercase fw-bold shadow-sm">Jerarquía</span>
+                    </div>
+                    <div class="panel-body">
+
+                        <!-- Fila 1: !important -->
+                        <div class="fila-peso">
+                            <div class="col-nombre text-center">
+                                <span>!important</span>
+                            </div>
+                            <div class="col-valores">
+                                1 , 0 , 0 , 0 , 0
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: #ID -->
+                        <div class="fila-peso">
+                            <div class="col-nombre text-center">
+                                <span>#ID</span>
+                            </div>
+                            <div class="col-valores">
+                                0 , 1 , 0 , 0 , 0
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Estilos en línea -->
+                        <div class="fila-peso">
+                            <div class="col-nombre text-center">
+                                <span>Estilos en línea</span>
+                            </div>
+                            <div class="col-valores">
+                                0 , 0 , 1 , 0 , 0
+                            </div>
+                        </div>
+
+                        <!-- Fila 4: .Clases -->
+                        <div class="fila-peso">
+                            <div class="col-nombre text-center">
+                                <span>.Clases</span>
+                                <small class="text-white-50 fw-normal">(pseudoclases o atributos)</small>
+                            </div>
+                            <div class="col-valores">
+                                0 , 0 , 0 , 1 , 0
+                            </div>
+                        </div>
+
+                        <!-- Fila 5: <Elementos/> (Destacada) -->
+                        <div class="fila-peso destacada">
+                            <div class="col-nombre text-center">
+                                <span>&lt;Elementos/&gt;</span>
+                                <small class="text-white-50 fw-normal">(o pseudoelementos)</small>
+                            </div>
+                            <div class="col-valores">
+                                0 , 0 , 0 , 0 , 1
+                            </div>
+                        </div>
+
+                        <!-- Fila 6: *Selector Universal -->
+                        <div class="fila-peso mb-0">
+                            <div class="col-nombre text-center">
+                                <span>*Selector Universal</span>
+                            </div>
+                            <div class="col-valores">
+                                0 , 0 , 0 , 0 , 0
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
+
