@@ -4,251 +4,801 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estructura de 22 Cajas con Bootstrap</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Pseudoclases en CSS: Guía Completa de Tipos y Comportamiento - Modo Oscuro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
         html,
         body {
             width: 100%;
             min-height: 100vh;
+            background-color: #0D0204;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .caja-nav {
+            background-color: #160408;
+            border: 1px solid rgba(230, 57, 70, 0.25);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
+            width: 100%;
+        }
+
+        .btn-nav {
+            white-space: normal;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-dark-active {
+            background: linear-gradient(135deg, #e63946, #9e1a34) !important;
+            color: #ffffff !important;
+            border: 1px solid #ff4d6d !important;
+            box-shadow: 0 0 12px rgba(230, 57, 70, 0.5) !important;
+            font-weight: 700;
+        }
+
+        .btn-dark-outline {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            background-color: rgba(230, 57, 70, 0.08);
+        }
+
+        .btn-dark-outline:hover {
+            background-color: #e63946;
+            border-color: #e63946;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Responsividad de la barra de navegación */
+        @media (max-width: 575.98px) {
+            .caja-nav {
+                padding: 12px 10px !important;
+                gap: 8px !important;
+            }
+            .btn-nav {
+                width: 100%;
+                font-size: 0.88rem;
+                padding: 9px 12px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .btn-nav {
+                flex: 1 1 calc(50% - 1rem);
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .btn-nav {
+                flex: 0 0 auto;
+            }
         }
 
         .caja {
             color: #ffffff;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
             border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            padding: 18px;
+            border: 1px solid rgba(230, 57, 70, 0.22);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55), 0 0 1px rgba(230, 57, 70, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
             width: 100%;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .caja:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7), 0 0 12px rgba(230, 57, 70, 0.35);
+            border-color: rgba(230, 57, 70, 0.45);
         }
 
-        /*NAV*/
+        /* Paleta Rojo Combinado - Modo Oscuro */
         .caja1 {
-            min-height: 80px;
-            background-color: #3b0910;
+            background-color: #160408;
+            border-color: rgba(230, 57, 70, 0.3);
         }
 
-        /*uno y dos*/
         .caja2 {
-            min-height: 200px;
-            background-color: #540b14;
-            font-size: 1.75rem;
+            background: linear-gradient(135deg, #1C060B, #2C0913);
+            border-color: rgba(230, 57, 70, 0.35);
         }
 
-        /*tres y cuatro*/
         .caja3 {
-            min-height: 150px;
-            background-color: #6e0d19;
-            font-size: 1.35rem;
+            background: linear-gradient(135deg, #22070E, #320A17);
+            border-color: rgba(230, 57, 70, 0.3);
         }
 
         .caja4 {
-            min-height: 150px;
-            background-color: #87101e;
-            font-size: 1.35rem;
+            background: linear-gradient(135deg, #280811, #3B0E1B);
+            border-color: rgba(230, 57, 70, 0.3);
         }
 
-        /*6x3*/
         .caja-grid {
-            min-height: 110px;
-            font-size: 1.1rem;
+            min-height: 230px;
         }
 
-        .caja5 {
-            background-color: #9e1322;
+        .caja5 { background-color: #380C19; }
+        .caja6 { background-color: #420E1E; }
+        .caja7 { background-color: #4D1123; }
+        .caja8 { background-color: #581428; }
+        .caja9 { background-color: #64172E; }
+        .caja10 { background-color: #701A34; }
+        .caja11 { background-color: #7D1E3A; }
+        .caja12 { background-color: #6E1A33; }
+        .caja13 { background-color: #5F152C; }
+        .caja14 { background-color: #501124; }
+        .caja15 { background-color: #430E1E; }
+        .caja16 { background-color: #360A17; }
+        .caja17 { background-color: #2D0813; }
+        .caja18 { background-color: #3C0D1C; }
+        .caja19 { background-color: #4C1123; }
+        .caja20 { background-color: #5B142A; }
+        .caja21 { background-color: #470F20; }
+        .caja22 { background-color: #24060E; }
+
+        .badge-numero {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
         }
 
-        .caja6 {
-            background-color: #b31828;
+        .badge-num-white {
+            background: linear-gradient(135deg, #ffffff, #ffd8df);
+            color: #590d22;
         }
 
-        .caja7 {
-            background-color: #c91d2f;
+        .badge-num-red {
+            background: linear-gradient(135deg, #e63946, #9e1a34);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .caja8 {
-            background-color: #dc2638;
+        .badge-num-darkred {
+            background-color: #160408;
+            color: #ff8597;
+            border: 1px solid rgba(230, 57, 70, 0.45);
         }
 
-        .caja9 {
-            background-color: #e63946;
+        .codigo-tag {
+            background-color: #120306;
+            color: #FF758F;
+            border: 1px solid rgba(230, 57, 70, 0.35);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            display: inline-block;
         }
 
-        .caja10 {
-            background-color: #ee4d5b;
+        .badge-categoria {
+            background-color: rgba(230, 57, 70, 0.18);
+            border: 1px solid rgba(230, 57, 70, 0.38);
+            color: #FFCCD5;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .caja11 {
-            background-color: #d90429;
+        .badge-pill-custom {
+            background-color: rgba(230, 57, 70, 0.15);
+            border: 1px solid rgba(230, 57, 70, 0.35);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #F8F9FA;
         }
 
-        .caja12 {
-            background-color: #c1121f;
+        .code-box {
+            background-color: #100205;
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .caja13 {
-            background-color: #a81320;
+        .descripcion-caja {
+            font-size: 0.84rem;
+            line-height: 1.4;
+            opacity: 0.92;
         }
 
-        .caja14 {
-            background-color: #8d0801;
-        }
-
-        .caja15 {
-            background-color: #780000;
-        }
-
-        .caja16 {
-            background-color: #640d14;
-        }
-
-        .caja17 {
-            background-color: #800e13;
-        }
-
-        .caja18 {
-            background-color: #ad2831;
-        }
-
-        .caja19 {
-            background-color: #c32f27;
-        }
-
-        .caja20 {
-            background-color: #d00000;
-        }
-
-        .caja21 {
-            background-color: #9d0208;
-        }
-
-        .caja22 {
-            background-color: #480a10;
+        .ejemplo-caja {
+            font-size: 0.78rem;
+            opacity: 0.85;
+            color: #FFCCD5;
+            font-style: italic;
         }
     </style>
 </head>
 
-<body class="bg-white py-4">
+<body>
 
-    <div class="container-fluid px-3">
+    <div class="container-fluid px-3 px-md-4 py-3 min-vh-100 d-flex flex-column">
 
-        <header class="row mb-4">
+        <!-- BARRA DE NAVEGACION RESPONSIVE COMPARTIDA (BOX #1) -->
+        <header class="row g-0 mb-3 mb-md-4">
             <div class="col-12">
-                <nav class="caja caja1 justify-content-between flex-wrap gap-3">
-                    <span class="fs-4 text-uppercase">BOX #1</span>
-                    <div class="d-flex gap-2 flex-wrap justify-content-center">
-                        <a class="btn btn-outline-light" href="index.html" role="button">Estructura y Sintaxis</a>
-                        <a class="btn btn-outline-light" href="espec.html" role="button">Niveles de Especifidad</a>
-                        <a class="btn btn-outline-light" href="pseudo.html" role="button">PseudoClases y Pseudo
-                            Elementos</a>
-                        <a class="btn btn-outline-light" href="boxmod.html" role="button">Modelo de Caja</a>
-                    </div>
+                <nav class="caja1 caja-nav d-flex p-3 justify-content-center align-items-center flex-wrap gap-2 gap-md-3" aria-label="BOX #1">
+                    <a class="btn btn-nav btn-dark-outline" href="index.html" role="button">Estructura y Sintaxis</a>
+                    <a class="btn btn-nav btn-dark-outline" href="espec.html" role="button">Niveles de Especificidad</a>
+                    <a class="btn btn-nav btn-dark-active" href="pseudo.html" role="button">PseudoClases y Pseudo Elementos</a>
+                    <a class="btn btn-nav btn-dark-outline" href="boxmod.html" role="button">Modelo de Caja</a>
                 </nav>
             </div>
         </header>
 
-        <section class="row mb-4">
-            <div class="col-12">
-                <div class="caja caja2 d-flex flex-column justify-content-center align-items-center gap-3">
-                    <span>BOX #2</span>
-
+        <!-- CAJA 2: HERO / DEFINICION PRINCIPAL -->
+        <section class="row g-2 mb-2">
+            <div class="col-12 d-flex">
+                <div class="caja caja2 p-4 text-center justify-content-center align-items-center">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="badge-numero badge-num-white">2</span>
+                        <span class="badge-categoria">BOX #2 &bull; FUNDAMENTO ESENCIAL</span>
+                    </div>
+                    <h1 class="fw-bold mb-3 text-white">¿Qué es una pseudoclase CSS?</h1>
+                    <p class="lead mb-3 text-white col-12 col-lg-10 mx-auto">
+                        Las pseudoclases se utilizan para hacer referencia a elementos HTML que tengan un cierto comportamiento concreto. Mientras los selectores clásicos apuntan a etiquetas o clases fijas en el código, las pseudoclases permiten seleccionar elementos que en principio parecen idénticos, pero presentan diferentes características de comportamiento en el navegador.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-1">
+                        <span class="badge-pill-custom">Notación con dos puntos simples (:)</span>
+                        <span class="badge-pill-custom">Respuesta a acciones del usuario</span>
+                        <span class="badge-pill-custom">Selección por estructura y estados</span>
+                        <span class="badge-pill-custom">Sin necesidad de JavaScript</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
-                <div class="caja caja3">
-                    BOX #3
+        <!-- CAJAS 3 Y 4: SINTAXIS Y EJEMPLO DESTACADO -->
+        <section class="row g-2 mb-2">
+            <!-- CAJA 3: SINTAXIS -->
+            <div class="col-12 col-md-6 d-flex">
+                <div class="caja caja3 p-4 justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between mb-3 border-bottom border-white border-opacity-25 pb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge-numero badge-num-white">3</span>
+                                <h4 class="fw-bold mb-0 text-white">BOX #3 &bull; Sintaxis General</h4>
+                            </div>
+                            <span class="badge-categoria">Regla CSS</span>
+                        </div>
+                        <p class="text-white mb-3">
+                            En el esquema de sintaxis de CSS, las pseudoclases se definen añadiendo dos puntos (<strong>:</strong>) antes del nombre de la pseudoclase concreta, colocada inmediatamente tras el selector o etiqueta sin dejar espacios:
+                        </p>
+                        <div class="code-box p-3 mb-3 text-center">
+                            <code class="codigo-tag fs-6">selector:pseudoclase { propiedad: valor; }</code>
+                        </div>
+                        <p class="text-white small mb-0">
+                            De esta forma podemos aplicar estilos específicos únicamente cuando el elemento entra en un estado concreto (pulsado, enfocado, deshabilitado o situado en una posición específica del documento).
+                        </p>
+                    </div>
+                    <div class="border-top border-white border-opacity-25 pt-2 mt-3">
+                        <small class="text-white-50">Diferencia clave: Las pseudoclases usan <strong>:</strong> (un solo par de puntos), mientras que los pseudoelementos usan <strong>::</strong> (doble dos puntos).</small>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="caja caja4">
-                    BOX #4
+
+            <!-- CAJA 4: EJEMPLO DE LA PAGINA (:hover) -->
+            <div class="col-12 col-md-6 d-flex">
+                <div class="caja caja4 p-4 justify-content-between">
+                    <div>
+                        <div class="d-flex align-items-center justify-content-between mb-3 border-bottom border-white border-opacity-25 pb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge-numero badge-num-white">4</span>
+                                <h4 class="fw-bold mb-0 text-white">BOX #4 &bull; Ejemplo Práctico</h4>
+                            </div>
+                            <span class="badge-categoria">:hover</span>
+                        </div>
+                        <p class="text-white mb-2">
+                            La pseudoclase más popular y elemental explicada en LenguajeCSS es <code class="codigo-tag">:hover</code>. Indica al navegador que dé estilo cuando el usuario posicione su ratón o dispositivo apuntador sobre el elemento:
+                        </p>
+                        <div class="code-box p-3 mb-3">
+                            <pre class="m-0 text-white" style="font-family: 'Courier New', Courier, monospace; font-size: 0.88rem;"><code>a { padding: 5px; }
+a:hover {
+  background: red;
+  color: white;
+  text-decoration: none;
+}</code></pre>
+                        </div>
+                        <ul class="text-white small mb-0 ps-3">
+                            <li>El enlace siempre tendrá un padding base de 5 píxeles.</li>
+                            <li>Tendrá fondo rojo, texto blanco y sin subrayado exclusivamente al pasar el ratón por encima.</li>
+                        </ul>
+                    </div>
+                    <div class="border-top border-white border-opacity-25 pt-2 mt-3">
+                        <small class="text-white-50">A continuación, exploramos los tipos y categorías de pseudoclases documentadas en LenguajeCSS.</small>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-4">
-            <div class="row g-3 mb-3">
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja5">BOX #5</div>
+        <!-- CAJAS 5 A 22: CATEGORIAS Y PSEUDOCLASES DE LENGUAJECSS -->
+        <section class="d-flex flex-column gap-2 mb-2">
+
+            <!-- FILA 1 (CAJAS 5 A 10): INTERACCION Y UBICACION -->
+            <div class="row g-2">
+                <!-- CAJA 5 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja5 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">5</span>
+                                    <span class="fw-bold text-white small">BOX #5</span>
+                                </div>
+                                <span class="badge-categoria">Interacción</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:hover</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Puntero Encima</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Se activa cuando el usuario coloca el ratón o dispositivo apuntador sobre el elemento sin necesidad de hacer clic.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Botones, tarjetas y enlaces.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja6">BOX #6</div>
+
+                <!-- CAJA 6 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja6 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">6</span>
+                                    <span class="fw-bold text-white small">BOX #6</span>
+                                </div>
+                                <span class="badge-categoria">Interacción</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:active</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Elemento Pulsado</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Representa el estado exacto en el que el usuario hace clic y mantiene presionado el botón del ratón sobre el elemento.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Efecto de botón presionado.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja7">BOX #7</div>
+
+                <!-- CAJA 7 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja7 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">7</span>
+                                    <span class="fw-bold text-white small">BOX #7</span>
+                                </div>
+                                <span class="badge-categoria">Interacción</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:focus</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Foco de Entrada</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Selecciona el elemento que tiene el foco activo, ya sea por clic o al navegar mediante la tecla Tabulador.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Resaltar campos de formulario.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja8">BOX #8</div>
+
+                <!-- CAJA 8 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja8 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">8</span>
+                                    <span class="fw-bold text-white small">BOX #8</span>
+                                </div>
+                                <span class="badge-categoria">Interacción</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:focus-within</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Foco en Descendiente</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Se activa sobre un contenedor padre cuando dicho contenedor o cualquiera de sus elementos hijos recibe el foco.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Iluminar un formulario entero.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja9">BOX #9</div>
+
+                <!-- CAJA 9 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja9 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">9</span>
+                                    <span class="fw-bold text-white small">BOX #9</span>
+                                </div>
+                                <span class="badge-categoria">Interacción</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:focus-visible</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Foco Accesible</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Aplica indicador de foco solo cuando el usuario navega con teclado, evitando marcos toscos al hacer clic con ratón.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Accesibilidad sin romper diseño.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja10">BOX #10</div>
-                </div>
-            </div>
-            <div class="row g-3 mb-3">
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja11">BOX #11</div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja12">BOX #12</div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja13">BOX #13</div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja14">BOX #14</div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja15">BOX #15</div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja16">BOX #16</div>
+
+                <!-- CAJA 10 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja10 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">10</span>
+                                    <span class="fw-bold text-white small">BOX #10</span>
+                                </div>
+                                <span class="badge-categoria">Ubicación</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:link / :visited</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Enlaces y Visitas</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                :link selecciona hipervínculos no visitados; :visited selecciona aquellos que el usuario ya ha abierto en su historial.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Señalización de enlaces leídos.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row g-3">
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja17">BOX #17</div>
+            <!-- FILA 2 (CAJAS 11 A 16): UBICACION, IDIOMA Y ESTRUCTURA -->
+            <div class="row g-2">
+                <!-- CAJA 11 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja11 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">11</span>
+                                    <span class="fw-bold text-white small">BOX #11</span>
+                                </div>
+                                <span class="badge-categoria">Ubicación</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:target / :any-link</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Ancla de la URL</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                :target apunta al elemento cuyo identificador coincide con el hash (#) de la URL actual. :any-link agrupa todo enlace con href.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Modales y pestañas con CSS.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja18">BOX #18</div>
+
+                <!-- CAJA 12 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja12 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">12</span>
+                                    <span class="fw-bold text-white small">BOX #12</span>
+                                </div>
+                                <span class="badge-categoria">Idioma</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:lang() / :dir()</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Idioma y Dirección</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                :lang() selecciona elementos según el idioma (ej. :lang(es)). :dir() detecta la dirección del texto (ltr o rtl).
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Sitios multilingües y citas.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja19">BOX #19</div>
+
+                <!-- CAJA 13 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja13 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">13</span>
+                                    <span class="fw-bold text-white small">BOX #13</span>
+                                </div>
+                                <span class="badge-categoria">Estructura</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:root</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Elemento Raíz</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Selecciona el elemento raíz del árbol HTML. Posee mayor especificidad que la etiqueta html y es el hogar de variables CSS.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Variables globales (:root { ... }).</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja20">BOX #20</div>
+
+                <!-- CAJA 14 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja14 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">14</span>
+                                    <span class="fw-bold text-white small">BOX #14</span>
+                                </div>
+                                <span class="badge-categoria">Estructura</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:empty</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Contenedor Vacío</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Selecciona elementos que no tienen ningún hijo, texto o nodo en su interior (ni siquiera espacios en blanco).
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Ocultar alertas sin mensajes.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja21">BOX #21</div>
+
+                <!-- CAJA 15 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja15 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">15</span>
+                                    <span class="fw-bold text-white small">BOX #15</span>
+                                </div>
+                                <span class="badge-categoria">Estructura</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:first/last-child</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Extremos de Hermanos</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                :first-child selecciona el primer elemento hijo de su contenedor padre; :last-child selecciona el último de ellos.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Quitar bordes a ítems de lista.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2">
-                    <div class="caja caja-grid caja22">BOX #22</div>
+
+                <!-- CAJA 16 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja16 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">16</span>
+                                    <span class="fw-bold text-white small">BOX #16</span>
+                                </div>
+                                <span class="badge-categoria">Estructura</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:nth-child()</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Patrones y Fórmulas</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Selecciona elementos por fórmulas numéricas (an+b), índices exactos o palabras clave como pares (even) e impares (odd).
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Tablas con filas tipo cebra.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- FILA 3 (CAJAS 17 A 22): FORMULARIOS, ESTADO Y PAGINADO -->
+            <div class="row g-2">
+                <!-- CAJA 17 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja17 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">17</span>
+                                    <span class="fw-bold text-white small">BOX #17</span>
+                                </div>
+                                <span class="badge-categoria">Formulario</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:checked</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Casilla Marcada</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Se aplica a elementos de tipo radio, checkbox u opciones de select que se encuentren activadas o seleccionadas.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Conmutadores y toggles custom.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAJA 18 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja18 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">18</span>
+                                    <span class="fw-bold text-white small">BOX #18</span>
+                                </div>
+                                <span class="badge-categoria">Formulario</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:enabled / :disabled</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Disponibilidad</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Discrimina entre elementos interactivos que están activos (:enabled) frente a los bloqueados con disabled (:disabled).
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Atenuar botones bloqueados.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAJA 19 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja19 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">19</span>
+                                    <span class="fw-bold text-white small">BOX #19</span>
+                                </div>
+                                <span class="badge-categoria">Formulario</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:valid / :invalid</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Validación Nativa</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Evalúa en vivo si el contenido introducido por el usuario cumple con las reglas del campo (como type="email" o minlength).
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Bordes verdes o rojos dinámicos.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAJA 20 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja20 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">20</span>
+                                    <span class="fw-bold text-white small">BOX #20</span>
+                                </div>
+                                <span class="badge-categoria">Formulario</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:required / :optional</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Obligatoriedad</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Selecciona campos que poseen el atributo required obligatorio frente a aquellos campos prescindibles u opcionales.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Señalización de campos mandatorios.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAJA 21 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja21 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">21</span>
+                                    <span class="fw-bold text-white small">BOX #21</span>
+                                </div>
+                                <span class="badge-categoria">Formulario</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:placeholder-shown</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Placeholder Visible</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                Se activa cuando el texto de guía del input sigue visible, señalando que el usuario todavía no ha escrito nada.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Etiquetas flotantes (floating labels).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAJA 22 -->
+                <div class="col-12 col-sm-6 col-md-4 col-xl-2 d-flex">
+                    <div class="caja caja-grid caja22 justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="badge-numero badge-num-white">22</span>
+                                    <span class="fw-bold text-white small">BOX #22</span>
+                                </div>
+                                <span class="badge-categoria">Estado y Paginado</span>
+                            </div>
+                            <div class="mb-2">
+                                <code class="codigo-tag">:fullscreen / :modal</code>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1">Pantalla y Modales</h6>
+                            <p class="descripcion-caja text-white mb-2">
+                                :fullscreen detecta elementos en pantalla completa; :modal selecciona diálogos dialog abiertos en capa superior nativa.
+                            </p>
+                        </div>
+                        <div class="border-top border-white border-opacity-25 pt-2">
+                            <span class="ejemplo-caja d-block">Uso: Reproductores y ventanas de diálogo.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

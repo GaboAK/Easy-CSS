@@ -4,44 +4,101 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ESPECIFICIDAD</title>
+    <title>Especificidad en CSS: Reglas y Jerarquía - Modo Oscuro</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
         body {
-            background-color: #4A0E17;
+            background-color: #0D0204;
             color: #ffffff;
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             min-height: 100vh;
         }
 
         .caja-nav {
-            background-color: #540b14;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: #160408;
+            border: 1px solid rgba(230, 57, 70, 0.25);
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
+            width: 100%;
+        }
+
+        .btn-nav {
+            white-space: normal;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-dark-active {
+            background: linear-gradient(135deg, #e63946, #9e1a34) !important;
+            color: #ffffff !important;
+            border: 1px solid #ff4d6d !important;
+            box-shadow: 0 0 12px rgba(230, 57, 70, 0.5) !important;
+            font-weight: 700;
+        }
+
+        .btn-dark-outline {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            background-color: rgba(230, 57, 70, 0.08);
+        }
+
+        .btn-dark-outline:hover {
+            background-color: #e63946;
+            border-color: #e63946;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Responsividad de la barra de navegación */
+        @media (max-width: 575.98px) {
+            .caja-nav {
+                padding: 12px 10px !important;
+                gap: 8px !important;
+            }
+            .btn-nav {
+                width: 100%;
+                font-size: 0.88rem;
+                padding: 9px 12px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .btn-nav {
+                flex: 1 1 calc(50% - 1rem);
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .btn-nav {
+                flex: 0 0 auto;
+            }
         }
 
         .caja-hero {
-            background-color: #7B111F;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #1C060B, #2E0914);
+            border: 1px solid rgba(230, 57, 70, 0.3);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
         }
 
         .panel-card {
-            background-color: #6D0F1B;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: #1A050A;
+            border: 1px solid rgba(230, 57, 70, 0.25);
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 1px rgba(230, 57, 70, 0.2);
             height: 100%;
         }
 
         .panel-header {
-            background-color: #540b14;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #160408, #25070F);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.25);
             padding: 16px 20px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -52,24 +109,26 @@
         }
 
         .fila-peso {
-            background-color: #7B111F;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, #22070E, #300A15);
+            border: 1px solid rgba(230, 57, 70, 0.22);
             border-radius: 8px;
             margin-bottom: 12px;
             display: flex;
             align-items: stretch;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .fila-peso:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.65), 0 0 10px rgba(230, 57, 70, 0.3);
+            border-color: rgba(230, 57, 70, 0.45);
         }
 
         .fila-peso.destacada {
-            background-color: #7B111F;
+            background: linear-gradient(135deg, #2A0812, #3B0E1B);
+            border-color: rgba(230, 57, 70, 0.35);
         }
 
         .col-nombre {
@@ -82,7 +141,7 @@
         }
 
         .col-valores {
-            background-color: #9E1C2C;
+            background-color: #4A1021;
             padding: 14px 22px;
             min-width: 190px;
             display: flex;
@@ -92,24 +151,26 @@
             font-size: 1.15rem;
             font-weight: 800;
             letter-spacing: 2px;
-            border-left: 2px solid rgba(255, 255, 255, 0.2);
+            border-left: 2px solid rgba(230, 57, 70, 0.4);
+            color: #FFCCD5;
         }
 
-
         .item-regla {
-            background-color: #8C1424;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, #240710, #350B17);
+            border: 1px solid rgba(230, 57, 70, 0.22);
             border-radius: 8px;
             padding: 12px 16px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .item-regla:hover {
             transform: translateX(4px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 8px rgba(230, 57, 70, 0.3);
+            border-color: rgba(230, 57, 70, 0.45);
         }
 
         .badge-numero {
@@ -119,34 +180,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 0.85rem;
             margin-right: 12px;
             flex-shrink: 0;
         }
 
         .badge-num-white {
-            background-color: #ffffff;
-            color: #7B111F;
-            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #ffd8df);
+            color: #590d22;
         }
 
         .badge-num-red {
-            background-color: #BA2436;
+            background: linear-gradient(135deg, #e63946, #9e1a34);
             color: #ffffff;
-            border: 1px solid #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .badge-num-darkred {
-            background-color: #540b14;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: #120306;
+            color: #ff8597;
+            border: 1px solid rgba(230, 57, 70, 0.45);
         }
 
         .codigo-tag {
-            background-color: #540b14;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: #120306;
+            color: #FF758F;
+            border: 1px solid rgba(230, 57, 70, 0.35);
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
@@ -154,10 +214,12 @@
         }
 
         .box-desempate {
-            background-color: #b60217;
+            background: linear-gradient(135deg, #4A0E1A, #631424);
+            border: 1px solid rgba(230, 57, 70, 0.4);
             border-radius: 8px;
             padding: 14px 18px;
             margin-top: 18px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
@@ -165,15 +227,14 @@
 <body>
     <div class="container-fluid px-3 px-md-4 py-3">
 
-        <header class="row mb-4">
+        <!-- BARRA DE NAVEGACION RESPONSIVE COMPARTIDA -->
+        <header class="row g-0 mb-3 mb-md-4">
             <div class="col-12">
-                <nav class="caja-nav d-flex p-3 justify-content-center align-items-center flex-wrap gap-2 gap-md-3">
-                    <a class="btn btn-outline-light" href="index.html" role="button">Estructura y sintaxis</a>
-                    <a class="btn btn-light fw-bold text-danger shadow" href="espec.html" role="button">Niveles de
-                        especificidad</a>
-                    <a class="btn btn-outline-light" href="pseudo.html" role="button">Pseudo Clases y Pseudo
-                        Elementos</a>
-                    <a class="btn btn-outline-light" href="boxmod.html" role="button">Modelo de caja</a>
+                <nav class="caja1 caja-nav d-flex p-3 justify-content-center align-items-center flex-wrap gap-2 gap-md-3">
+                    <a class="btn btn-nav btn-dark-outline" href="index.html" role="button">Estructura y Sintaxis</a>
+                    <a class="btn btn-nav btn-dark-active" href="espec.html" role="button">Niveles de Especificidad</a>
+                    <a class="btn btn-nav btn-dark-outline" href="pseudo.html" role="button">PseudoClases y Pseudo Elementos</a>
+                    <a class="btn btn-nav btn-dark-outline" href="boxmod.html" role="button">Modelo de Caja</a>
                 </nav>
             </div>
         </header>
@@ -181,9 +242,9 @@
         <section class="row mb-4">
             <div class="col-12">
                 <div class="caja-hero p-4 text-center">
-                    <h1 class="fw-bold mb-2 text-white">ESPECIFICIDAD</h1>
-                    <p class="lead mb-0 text-white">
-                        REGLAS CSS
+                    <h1 class="fw-bold mb-2 text-white">ESPECIFICIDAD EN CSS</h1>
+                    <p class="lead mb-0 text-white opacity-90">
+                        Cálculo y jerarquía del peso de reglas &bull; Modo Oscuro
                     </p>
                 </div>
             </div>
@@ -191,80 +252,67 @@
 
         <div class="row g-4">
 
-            <div class="col-12">
+            <div class="col-12 col-lg-6">
                 <div class="panel-card d-flex flex-column">
                     <div class="panel-header">
-                        <h4 class="fw-bold mb-0 text-white">¿Qué es?</h4>
+                        <h4 class="fw-bold mb-0 text-white">¿Qué es la Especificidad?</h4>
                     </div>
                     <div class="panel-body">
                         <p class="mb-3 text-white">
-                            <strong class="text-white"></strong> Peso que tiene cada regla.
-                            Si dos reglas apuntan al mismo, se usa el de mayor puntaje según.
+                            Es el peso o valor que tiene cada regla en CSS. Si dos o más reglas apuntan al mismo elemento HTML, el navegador aplicará los estilos de la regla con mayor puntaje:
                         </p>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-white">1</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                 <span class="fw-bold me-2 text-white">!important</span>
-                                <span class="small text-white">Prioridad Superior. Sobrescribe cualquier estilo.</span>
+                                <span class="small text-white opacity-90">Prioridad Máxima. Sobrescribe cualquier regla.</span>
                             </div>
                         </div>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-red">2</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                 <span class="fw-bold me-2 text-white">#ID</span>
-                                <span class="small text-white">Identificador único (<code
-                                        class="codigo-tag">#header</code>). Mayor peso.</span>
+                                <span class="small text-white opacity-90">Identificador único (<code class="codigo-tag">#header</code>). Alto peso.</span>
                             </div>
                         </div>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-red">3</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                 <span class="fw-bold me-2 text-white">Estilos en línea</span>
-                                <span class="small text-white">Declarados en el HTML con <code
-                                        class="codigo-tag">style=""</code>.</span>
+                                <span class="small text-white opacity-90">Declarados en el HTML con <code class="codigo-tag">style=""</code>.</span>
                             </div>
                         </div>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-red">4</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                 <span class="fw-bold me-2 text-white">.Clases / Pseudo</span>
-                                <span class="small text-white">Clases (<code class="codigo-tag">.btn</code>),
-                                    pseudoclases y atributos.</span>
+                                <span class="small text-white opacity-90">Clases (<code class="codigo-tag">.btn</code>), pseudoclases y atributos.</span>
                             </div>
                         </div>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-red">5</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                                 <span class="fw-bold me-2 text-white">&lt;Elementos/&gt;</span>
-                                <span class="small text-white">Etiquetas (<code class="codigo-tag">p</code>, <code
-                                        class="codigo-tag">div</code>) y pseudoelementos.</span>
+                                <span class="small text-white opacity-90">Etiquetas (<code class="codigo-tag">p</code>, <code class="codigo-tag">div</code>) y pseudoelementos.</span>
                             </div>
                         </div>
 
                         <div class="item-regla">
                             <span class="badge-numero badge-num-darkred">6</span>
-                            <div
-                                class="w-50 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                <span class="fw-bold me-2 text-white">*Universal</span>
-                                <span class="small text-white">Comodín <code class="codigo-tag">*</code>. No aporta
-                                    puntos (0).</span>
+                            <div class="w-100 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                <span class="fw-bold me-2 text-white">* Universal</span>
+                                <span class="small text-white opacity-90">Comodín <code class="codigo-tag">*</code>. No aporta puntos (0).</span>
                             </div>
                         </div>
 
                         <div class="box-desempate">
                             <p class="small mb-0 text-white">
-                                <strong class="text-white">DATOS</strong> Si tienen la misma puntuación, gana la
-                                que esté <strong>más abajo</strong> en el código CSS
+                                <strong class="text-white">Criterio de Desempate:</strong> Si dos reglas poseen idéntica puntuación de especificidad, prevalece la que esté escrita <strong>más abajo</strong> en la hoja de estilos CSS (efecto cascada).
                             </p>
                         </div>
 
@@ -272,10 +320,10 @@
                 </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 col-lg-6">
                 <div class="panel-card d-flex flex-column">
                     <div class="panel-header d-flex justify-content-between align-items-center">
-                        <h4 class="fw-bold mb-0 text-white">Tabla</h4>
+                        <h4 class="fw-bold mb-0 text-white">Tabla de Puntajes</h4>
                     </div>
                     <div class="panel-body">
 
@@ -283,7 +331,7 @@
                             <div class="col-nombre text-center text-white">
                                 <span>!important</span>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 1 , 0 , 0 , 0 , 0
                             </div>
                         </div>
@@ -292,7 +340,7 @@
                             <div class="col-nombre text-center text-white">
                                 <span>#ID</span>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 0 , 1 , 0 , 0 , 0
                             </div>
                         </div>
@@ -301,7 +349,7 @@
                             <div class="col-nombre text-center text-white">
                                 <span>Estilos en línea</span>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 0 , 0 , 1 , 0 , 0
                             </div>
                         </div>
@@ -309,9 +357,9 @@
                         <div class="fila-peso">
                             <div class="col-nombre text-center text-white">
                                 <span>.Clases</span>
-                                <small class="text-white fw-normal">(pseudoclases o atributos)</small>
+                                <small class="text-white-50 fw-normal">(pseudoclases o atributos)</small>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 0 , 0 , 0 , 1 , 0
                             </div>
                         </div>
@@ -319,18 +367,18 @@
                         <div class="fila-peso destacada">
                             <div class="col-nombre text-center text-white">
                                 <span>&lt;Elementos/&gt;</span>
-                                <small class="text-white fw-normal">(o pseudoelementos)</small>
+                                <small class="text-white-50 fw-normal">(o pseudoelementos)</small>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 0 , 0 , 0 , 0 , 1
                             </div>
                         </div>
 
                         <div class="fila-peso mb-0">
                             <div class="col-nombre text-center text-white">
-                                <span>*Selector Universal</span>
+                                <span>* Selector Universal</span>
                             </div>
-                            <div class="col-valores text-white">
+                            <div class="col-valores">
                                 0 , 0 , 0 , 0 , 0
                             </div>
                         </div>
@@ -345,7 +393,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

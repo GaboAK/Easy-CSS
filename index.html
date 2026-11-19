@@ -4,15 +4,84 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>CSS Maqueta</title>
-
+    <title>CSS Maqueta - Modo Oscuro Rojo</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
 
     <style>
+        html,
+        body {
+            background-color: #0D0204;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .caja-nav {
+            background-color: #160408;
+            border: 1px solid rgba(230, 57, 70, 0.25);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
+            width: 100%;
+        }
+
+        .btn-nav {
+            white-space: normal;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-dark-active {
+            background: linear-gradient(135deg, #e63946, #9e1a34) !important;
+            color: #ffffff !important;
+            border: 1px solid #ff4d6d !important;
+            box-shadow: 0 0 12px rgba(230, 57, 70, 0.5) !important;
+            font-weight: 700;
+        }
+
+        .btn-dark-outline {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            background-color: rgba(230, 57, 70, 0.08);
+        }
+
+        .btn-dark-outline:hover {
+            background-color: #e63946;
+            border-color: #e63946;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Responsividad de la barra de navegación */
+        @media (max-width: 575.98px) {
+            .caja-nav {
+                padding: 12px 10px !important;
+                gap: 8px !important;
+            }
+            .btn-nav {
+                width: 100%;
+                font-size: 0.88rem;
+                padding: 9px 12px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991.98px) {
+            .btn-nav {
+                flex: 1 1 calc(50% - 1rem);
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .btn-nav {
+                flex: 0 0 auto;
+            }
+        }
+
         .caja1,
         .caja2,
         .caja3,
@@ -24,134 +93,199 @@
         .caja9,
         .caja10 {
             text-align: center;
+            border: 1px solid rgba(230, 57, 70, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .caja2:hover,
+        .caja3:hover,
+        .caja4:hover,
+        .caja5:hover,
+        .caja6:hover,
+        .caja7:hover,
+        .caja8:hover,
+        .caja9:hover,
+        .caja10:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7), 0 0 12px rgba(230, 57, 70, 0.35);
+            border-color: rgba(230, 57, 70, 0.45);
         }
 
         .caja1 {
-            height: 100px;
-            background-color: #4A0E17;
+            min-height: 70px;
+            background-color: #160408;
+            border-color: rgba(230, 57, 70, 0.25);
         }
 
         .caja2 {
-            height: 300px;
-            background-color: #7B111F;
+            min-height: 250px;
+            background: linear-gradient(135deg, #1C060B, #2E0914);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
         }
 
         .caja3 {
-            height: 300px;
-            background-color: #9E1C2C;
+            min-height: 280px;
+            background: linear-gradient(rgba(13, 2, 4, 0.75), rgba(28, 6, 11, 0.85)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .caja4 {
-            height: 300px;
-            background-color: #BA2436;
+            min-height: 280px;
+            background: linear-gradient(rgba(13, 2, 4, 0.75), rgba(35, 7, 14, 0.85)), url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .caja5 {
-            height: 300px;
-            background-color: #D62839;
+            min-height: 280px;
+            background: linear-gradient(rgba(13, 2, 4, 0.8), rgba(45, 9, 18, 0.88)), url('https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg') center/contain no-repeat;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .caja6 {
-            height: 300px;
-            background-color: #8C1424;
+            min-height: 220px;
+            background: linear-gradient(135deg, #22070E, #330A15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .caja7 {
-            height: 300px;
-            background-color: #A31B2D;
+            min-height: 220px;
+            background: linear-gradient(135deg, #2D0812, #400D1C);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .caja8 {
-            height: 300px;
-            background-color: #BF2537;
+            min-height: 220px;
+            background: linear-gradient(135deg, #380A17, #4E1023);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .caja9 {
-            height: 300px;
-            background-color: #6D0F1B;
+            min-height: 220px;
+            background: linear-gradient(135deg, #260710, #380B17);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .caja10 {
-            height: 300px;
-            background-color: #4A0E17;
+            min-height: 220px;
+            background: linear-gradient(135deg, #180409, #25070F);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .img-header-container {
+            background-color: #120306;
+            border-bottom: 1px solid rgba(230, 57, 70, 0.25);
+            overflow: hidden;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <nav
-                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 caja1 d-flex p-4 justify-content-center align-items-center flex-wrap gap-3">
-                <a class="btn btn-outline-light" href="#" role="button">Estructura y Sintaxis</a>
-                <a class="btn btn-outline-light" href="espec.html" role="button">Niveles de Especifidad</a>
-                <a class="btn btn-outline-light" href="pseudo.html" role="button">PseudoClases y Pseudo Elementos</a>
-                <a class="btn btn-outline-light" href="boxmod.html" role="button">Modelo de Caja</a>
-            </nav>
-            <header
-                class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-12 col-xxl-12 caja1 d-flex justify-content-center align-items-center text-white text-uppercase fw-bold text-center">
-                Ecosistema de Maquetación Web &amp; Diseño Adaptativo</header>
-            <img src="./img/header-image.svg" alt="Logo de CSS3" height="660px" width="100%">
+    <div class="container-fluid px-3 px-md-4 py-3">
 
-            <div
-                class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-12 col-xxl-12 caja2 d-flex flex-column justify-content-center align-items-center text-white text-center p-4">
-                <h1 class="fw-bold">Diseño Frontend &amp; Maquetación Web</h1>
-                <p class="lead">Construye interfaces responsivas, accesibles y de alto impacto visual con CSS3 y
-                    Bootstrap 5.</p>
+        <!-- BARRA DE NAVEGACION RESPONSIVE COMPARTIDA -->
+        <header class="row g-0 mb-3 mb-md-4">
+            <div class="col-12">
+                <nav class="caja1 caja-nav d-flex p-3 justify-content-center align-items-center flex-wrap gap-2 gap-md-3">
+                    <a class="btn btn-nav btn-dark-active" href="index.html" role="button">Estructura y Sintaxis</a>
+                    <a class="btn btn-nav btn-dark-outline" href="espec.html" role="button">Niveles de Especificidad</a>
+                    <a class="btn btn-nav btn-dark-outline" href="pseudo.html" role="button">PseudoClases y Pseudo Elementos</a>
+                    <a class="btn btn-nav btn-dark-outline" href="boxmod.html" role="button">Modelo de Caja</a>
+                </nav>
             </div>
+        </header>
 
-            <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja3 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=800&amp;q=80') center/cover no-repeat;">
-                <h3 class="fw-bold">Arquitectura Semántica</h3>
-                <p>Estructuras limpias y etiquetas semánticas que optimizan la indexación SEO y la usabilidad universal.
-                </p>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-4 col-xxl-4 caja4 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&amp;fit=crop&amp;w=800&amp;q=80') center/cover no-repeat;">
-                <h3 class="fw-bold">Flexbox &amp; Dinamismo</h3>
-                <p>Dominio total de flujos flexibles, gradientes modernos y transiciones fluidas de alta precisión.</p>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-10 col-lg-10 col-xl-4 col-xxl-4 caja5 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center"
-                style="background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg') center/contain no-repeat;">
-                <h3 class="fw-bold">Bootstrap &amp; Grid System</h3>
-                <p>Sistemas modulares de doce columnas preparados para adaptarse ágilmente a cualquier dispositivo.</p>
-            </div>
-
-            <div
-                class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-3 col-xxl-3 caja6 p-3 text-white d-flex flex-column justify-content-center align-items-center text-center">
-                <h5 class="fw-bold mb-3">Recursos &amp; Guías</h5>
-                <ul class="list-unstyled text-center mb-0">
-                    <li><a href="#" class="text-white text-decoration-none">Guía de Maquetación</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Biblioteca de Componentes</a></li>
-                </ul>
-            </div>
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 col-xxl-2 caja7 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
-                <h4 class="fw-bold">+1,200</h4>
-                <small class="mb-0">Proyectos Desplegados</small>
-            </div>
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 col-xxl-2 caja8 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
-                <h4 class="fw-bold">100%</h4>
-                <small class="mb-0">Desarrollo Práctico</small>
-            </div>
-            <div
-                class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 col-xxl-2 caja9 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center">
-                <h4 class="fw-bold">24/7</h4>
-                <small class="mb-0">Disponibilidad Cloud</small>
-            </div>
-            <div
-                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-3 col-xxl-3 caja10 p-3 text-white d-flex flex-column justify-content-center align-items-center text-center">
-                <h5 class="fw-bold mb-2">Soporte &amp; Contacto</h5>
-                <p class="small text-center mb-0">soporte@adso-css.edu.co<br>© 2026 CSS Fácil ADSO</p>
+        <!-- SUBHEADER -->
+        <div class="row g-2 mb-2">
+            <div class="col-12 caja1 d-flex justify-content-center align-items-center text-white text-uppercase fw-bold text-center py-3 border border-white border-opacity-10 rounded">
+                Ecosistema de Maquetación Web &amp; Diseño Adaptativo &bull; Modo Oscuro
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-            </script>
+        <!-- BANNER PRINCIPAL SVG -->
+        <div class="row g-2 mb-2">
+            <div class="col-12 img-header-container text-center rounded">
+                <img src="./img/header-image.svg" alt="Logo de CSS3" class="img-fluid w-100" style="max-height: 520px; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- HERO INTRO -->
+        <div class="row g-2 mb-2">
+            <div class="col-12 caja2 d-flex flex-column justify-content-center align-items-center text-white text-center p-4 p-md-5 rounded">
+                <h1 class="fw-bold mb-3">Diseño Frontend &amp; Maquetación Web</h1>
+                <p class="lead col-12 col-md-8 mx-auto opacity-90">Construye interfaces responsivas, accesibles y de alto impacto visual con CSS3 y Bootstrap 5 bajo arquitectura Dark Mode.</p>
+            </div>
+        </div>
+
+        <!-- CARDS DE ARQUITECTURA -->
+        <div class="row g-2 mb-2">
+            <div class="col-12 col-md-4 d-flex">
+                <div class="caja3 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center w-100 rounded">
+                    <h3 class="fw-bold mb-2">Arquitectura Semántica</h3>
+                    <p class="opacity-90">Estructuras limpias y etiquetas semánticas que optimizan la indexación SEO y la usabilidad universal.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex">
+                <div class="caja4 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center w-100 rounded">
+                    <h3 class="fw-bold mb-2">Flexbox &amp; Dinamismo</h3>
+                    <p class="opacity-90">Dominio total de flujos flexibles, gradientes modernos y transiciones fluidas de alta precisión.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 d-flex">
+                <div class="caja5 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center w-100 rounded">
+                    <h3 class="fw-bold mb-2">Bootstrap &amp; Grid System</h3>
+                    <p class="opacity-90">Sistemas modulares de doce columnas preparados para adaptarse ágilmente a cualquier dispositivo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PIE DE RECURSOS Y METRICAS -->
+        <div class="row g-2">
+            <div class="col-12 col-md-3 d-flex">
+                <div class="caja6 p-4 text-white d-flex flex-column justify-content-center align-items-center text-center w-100 rounded">
+                    <h5 class="fw-bold mb-3">Recursos &amp; Guías</h5>
+                    <ul class="list-unstyled text-center mb-0">
+                        <li class="mb-2"><a href="boxmod.html" class="text-white text-decoration-none opacity-90">&bull; Guía de Box Model</a></li>
+                        <li><a href="pseudo.html" class="text-white text-decoration-none opacity-90">&bull; Guía de Pseudoclases</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-2 d-flex">
+                <div class="caja7 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center w-100 rounded">
+                    <h4 class="fw-bold mb-1" style="color: #FF758F !important;">+1,200</h4>
+                    <small class="mb-0 opacity-75">Proyectos Desplegados</small>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-2 d-flex">
+                <div class="caja8 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center w-100 rounded">
+                    <h4 class="fw-bold mb-1" style="color: #FF758F !important;">100%</h4>
+                    <small class="mb-0 opacity-75">Desarrollo Práctico</small>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-md-2 d-flex">
+                <div class="caja9 p-3 text-white d-flex flex-column align-items-center justify-content-center text-center w-100 rounded">
+                    <h4 class="fw-bold mb-1" style="color: #FF758F !important;">24/7</h4>
+                    <small class="mb-0 opacity-75">Disponibilidad Cloud</small>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-3 d-flex">
+                <div class="caja10 p-3 text-white d-flex flex-column justify-content-center align-items-center text-center w-100 rounded">
+                    <h5 class="fw-bold mb-2">Soporte &amp; Contacto</h5>
+                    <p class="small text-center mb-0 opacity-75">soporte@adso-css.edu.co<br>© 2026 CSS Fácil ADSO</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
